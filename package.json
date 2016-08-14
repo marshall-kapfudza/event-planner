@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/alexanderscott/backbone-login.git"
   },
-  "author": "Alex Ehrnschwender <alexanderscott46@gmail.com> (http://alexehrnschwender.com)",
+  "author": "Alex Ehrnschwender",
   "scripts": {
     "start": "node server.js"
   },

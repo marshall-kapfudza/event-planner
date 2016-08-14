@@ -1,9 +1,6 @@
 backbone-login
 ==============
-Best practices & [demo app](http://backbone-login.crunchdevelopment.com) for client-side authentication via Backbone.js AJAX.
-
-Blog article with further details and explanation can be found [here](http://alexehrnschwender.com/2013/07/client-side-auth-session-mgmt-backbone-node/).
-
+Best practices for client-side authentication via Backbone.js AJAX.
 
 The app demos the following:
   * CSRF headers in authentication requests to prevent forgery
@@ -33,8 +30,8 @@ Responds to API routes, as well as initial index.html page render to plant the s
 
 Install & Run
 --------------
-	git clone https://github.com/alexanderscott/backbone-login.git
-	cd backbone-login
+	git clone https://github.com/marshall-kapfudza/meet-up-event-planner.git
+	cd meet-up-event-planner
 	npm install
 	node server.js
 
