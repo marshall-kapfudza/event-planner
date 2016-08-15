@@ -1,10 +1,11 @@
 <div id="logged-in-template" class="container">
     <h1> What's up <%= user.username %>?! </h1>
     <h4>Create an Event</h4>
-    <form>
+
+    <form role="form" data-toggle="validator">
       <div class="form-group">
           <label for="eventName">Event Name</label>
-          <input type="text" class="form-control" id="eventName" placeholder="Event Name" autofocus required>
+          <input type="text" class="form-control" id="eventName" name="event" placeholder="Event Name" autofocus required>
       </div>
       <div class="form-group">
           <label for="eventType">Event Type</label>
@@ -40,9 +41,17 @@
 
         <div class="form-group col-md-6">
             <label for="eventEnd">End date</label>
-            <input type="date" class="form-control" id="eventEnd" required>
+            <input type="datetime" class="form-control" id="eventEnd" required>
         </div>
       </div>
+
+
+        <div class="form-group">
+          <label for="eventLocation">Location</label>
+          <input id="locationName" name="locationName" type="text" class="form-control pac-input">
+        </div>
+
+
 
       <div>
         <label for="eventAbout">About the Event</label>

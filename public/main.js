@@ -44,4 +44,3 @@ function(app, WebRouter, SessionModel) {
 
     });
 });
-
