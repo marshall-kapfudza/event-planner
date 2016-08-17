@@ -1,6 +1,7 @@
 /**
  * @desc        app globals
  */
+ // var eonasdan = require("eonasdan-bootstrap-datetimepicker");
 define([
     "jquery",
     "underscore",

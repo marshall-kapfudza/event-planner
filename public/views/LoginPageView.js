@@ -7,6 +7,13 @@ define([
     "parsley"
 ], function(app, LoggedInPageTpl, LoginPageTpl){
 
+  function init() {
+    var input = document.getElementById('locationName');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+  }
+  google.maps.event.addDomListener(window, 'load', init);
+
+
     var LoginView = Backbone.View.extend({
 
         initialize: function () {
@@ -104,7 +111,8 @@ define([
 
             this.$el.html(this.template({ user: app.session.user.toJSON() }));
             return this;
-        }
+        },
+
 
     });
 
