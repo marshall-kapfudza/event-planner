@@ -74,19 +74,13 @@
     <h1> What's up <%= user.username %>?! </h1>
     <h4>Create an Event</h4>
 
-<<<<<<< HEAD
-    <form role="form" data-toggle="validator">
-      <div class="form-group">
-          <label for="eventName">Event Name</label>
-          <input type="text" class="form-control" id="eventName" name="event" placeholder="Event Name" autofocus required>
-=======
+
     <form role="form" action="" onsubmit="return validateForm()">
 
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" name="name" id="name" onblur="validateName(name)" autofocus="on" placeholder="Event Name" />
         <span id="nameError" style="display: none; color: red;">This field can not be empty please use alphabetic characters, hyphens and apostrophes</span>
->>>>>>> event-form
       </div>
 
       <div class="form-group">
@@ -131,18 +125,10 @@
 
         <div class="form-group">
           <label for="eventLocation">Location</label>
-<<<<<<< HEAD
-          <input id="locationName" name="locationName" type="text" class="form-control pac-input">
-        </div>
-
-
-
-=======
           <input class="form-control " name="locationName" id="locationName" onblur="validateLocation(name)" type="text" class="form-control pac-input" required>
           <span class="validateError" id="locationNameError" style="display: none; color: red;">This field can not be empty please enter location</span>
         </div>
 
->>>>>>> event-form
       <div>
         <label for="eventAbout">About the Event</label>
         <textarea class="form-control" rows="5" id="comment"></textarea>
