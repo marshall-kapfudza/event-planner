@@ -7,6 +7,13 @@ define([
     "parsley"
 ], function(app, LoggedInPageTpl, LoginPageTpl){
 
+  function init() {
+    var input = document.getElementById('locationName');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+  }
+  google.maps.event.addDomListener(window, 'load', init);
+
+
     var LoginView = Backbone.View.extend({
 
         initialize: function () {
@@ -63,7 +70,7 @@ define([
                     },
                     error: function(err){
                         if(DEBUG) console.log("ERROR", err);
-                        app.showAlert('Bummer dude!', err.error, 'alert-danger'); 
+                        app.showAlert('Bummer dude!', err.error, 'alert-danger');
                     }
                 });
             } else {
@@ -72,7 +79,7 @@ define([
 
             }
         },
-        
+
 
         onSignupAttempt: function(evt){
             if(evt) evt.preventDefault();
@@ -88,7 +95,7 @@ define([
                     },
                     error: function(err){
                         if(DEBUG) console.log("ERROR", err);
-                        app.showAlert('Uh oh!', err.error, 'alert-danger'); 
+                        app.showAlert('Uh oh!', err.error, 'alert-danger');
                     }
                 });
             } else {
@@ -100,14 +107,14 @@ define([
 
         render:function () {
             if(app.session.get('logged_in')) this.template = _.template(LoggedInPageTpl);
-            else this.template = _.template(LoginPageTpl); 
+            else this.template = _.template(LoginPageTpl);
 
             this.$el.html(this.template({ user: app.session.user.toJSON() }));
             return this;
-        }
+        },
+
 
     });
 
     return LoginView;
 });
-
