@@ -35,6 +35,19 @@
         return false;
       }
     }
+    // Validate Type
+    function validateType(eventType){
+        var re = /[A-Za-z -']$/;
+      if(re.test(document.getElementById(eventType).value)){
+        document.getElementById(eventType).style.background ='#FFFFFF';
+        document.getElementById(eventType + 'Error').style.display = "none";
+        return true;
+        }else{
+        document.getElementById(eventType).style.background ='#ffd1d1';
+        document.getElementById(eventType + 'Error').style.display = "block";
+        return false;
+      }
+    }
 
     function validateForm(){
       // Set error catcher
@@ -47,6 +60,11 @@
       // Validate location
       if(!validateLocation('locationName')){
         document.getElementById('locationNameError').style.display = "block";
+        error++;
+      }
+      //validate Type
+      if(!validateType('eventType')){
+        document.getElementById('eventTypeError').style.display = "block";
         error++;
       }
       // Don't submit form if there are errors
@@ -72,7 +90,8 @@
 
       <div class="form-group">
           <label for="eventType">Event Type</label>
-          <input type="text" class="form-control" id="eventType" placeholder="Event Type" list="Type"  >
+          <input class="form-control " name="eventType" id="eventType" onblur="validateType(name)" type="text" list="Type" class="form-control pac-input" placeholder="Type of event" required>
+          <span class="validateType" id="eventTypeError" style="display: none; color: red;">This field can not be empty</span>
           <datalist id="Type">
             <option value="birthday party">
             <option value="conference talk">
@@ -119,6 +138,7 @@
         <label for="eventAbout">About the Event</label>
         <textarea class="form-control" rows="5" id="comment"></textarea>
       </div>
+
 
       <button class="btn btn-primary"  id="submit" name="submit" value="Submit">Submit</button>
 
