@@ -49,19 +49,6 @@
         document.getElementById('locationNameError').style.display = "block";
         error++;
       }
-      // Validate Radio
-      if(validateRadio('left')){
-
-      }else if(validateRadio('right')){
-
-      }else{
-        document.getElementById('handError').style.display = "block";
-        error++;
-      }
-      if(!validateCheckbox('accept')){
-        document.getElementById('termsError').style.display = "block";
-        error++;
-      }
       // Don't submit form if there are errors
       if(error > 0){
         return false;
@@ -98,6 +85,12 @@
           <input type="text" class="form-control" id="eventHost" placeholder="Event Host" required>
       </div>
 
+      <div class="form-group">
+        <label for="eventLocation">Location</label>
+        <input class="form-control " name="locationName" id="locationName" onblur="validateLocation(name)" type="text" class="form-control pac-input" required>
+        <span class="validateError" id="locationNameError" style="display: none; color: red;">This field can not be empty please enter location</span>
+      </div>
+
       <div class="row">
         <div class="form-group col-md-6">
           <label for="eventStart">Start time</label>
@@ -121,13 +114,6 @@
             <input type="datetime" class="form-control" id="eventEnd" required>
         </div>
       </div>
-
-
-        <div class="form-group">
-          <label for="eventLocation">Location</label>
-          <input class="form-control " name="locationName" id="locationName" onblur="validateLocation(name)" type="text" class="form-control pac-input" required>
-          <span class="validateError" id="locationNameError" style="display: none; color: red;">This field can not be empty please enter location</span>
-        </div>
 
       <div>
         <label for="eventAbout">About the Event</label>
