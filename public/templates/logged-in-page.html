@@ -1,24 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Validation tutorial</title>
+  <script>
+    function validateName(x){
+      // Validation rule
+      var re = /[A-Za-z -']$/;
+      // Check input
+      if(re.test(document.getElementById(x).value)){
+        // Style green
+        document.getElementById(x).style.background ='#FFFFFF';
+        // Hide error prompt
+        document.getElementById(x + 'Error').style.display = "none";
+        return true;
+      }else{
+        // Style red
+        document.getElementById(x).style.background ='#ffd1d1';
+        // Show error prompt
+        document.getElementById(x + 'Error').style.display = "block";
+        return false;
+      }
+    }
+    // Validate Location
+    function validateLocation(locationName){
+        var re = /[A-Za-z -']$/;
+      if(re.test(document.getElementById(locationName).value)){
+        document.getElementById(locationName).style.background ='#FFFFFF';
+        document.getElementById(locationName + 'Error').style.display = "none";
+        return true;
+        }else{
+        document.getElementById(locationName).style.background ='#ffd1d1';
+        document.getElementById(locationName + 'Error').style.display = "block";
+        return false;
+      }
+    }
+    // Validate Type
+    function validateType(eventType){
+        var re = /[A-Za-z -']$/;
+      if(re.test(document.getElementById(eventType).value)){
+        document.getElementById(eventType).style.background ='#FFFFFF';
+        document.getElementById(eventType + 'Error').style.display = "none";
+        return true;
+        }else{
+        document.getElementById(eventType).style.background ='#ffd1d1';
+        document.getElementById(eventType + 'Error').style.display = "block";
+        return false;
+      }
+    }
+
+    function validateForm(){
+      // Set error catcher
+      var error = 0;
+      // Check name
+      if(!validateName('name')){
+        document.getElementById('nameError').style.display = "block";
+        error++;
+      }
+      // Validate location
+      if(!validateLocation('locationName')){
+        document.getElementById('locationNameError').style.display = "block";
+        error++;
+      }
+      //validate Type
+      if(!validateType('eventType')){
+        document.getElementById('eventTypeError').style.display = "block";
+        error++;
+      }
+      // Don't submit form if there are errors
+      if(error > 0){
+        return false;
+      }
+    }
+  </script>
+</head>
+
 <div id="logged-in-template" class="container">
     <h1> What's up <%= user.username %>?! </h1>
     <h4>Create an Event</h4>
 
-    <form role="form" data-toggle="validator">
+
+    <form role="form" action="" onsubmit="return validateForm()">
+
       <div class="form-group">
-          <label for="eventName">Event Name</label>
-          <input type="text" class="form-control" id="eventName" name="event" placeholder="Event Name" autofocus required>
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" id="name" onblur="validateName(name)" autofocus="on" placeholder="Event Name" />
+        <span id="nameError" style="display: none; color: red;">This field can not be empty please use alphabetic characters, hyphens and apostrophes</span>
       </div>
+
       <div class="form-group">
           <label for="eventType">Event Type</label>
-          <input type="text" class="form-control" id="eventType" placeholder="Event Type" list="Type" >
+          <input class="form-control " name="eventType" id="eventType" onblur="validateType(name)" type="text" list="Type" class="form-control pac-input" placeholder="Type of event" required>
+          <span class="validateType" id="eventTypeError" style="display: none; color: red;">This field can not be empty</span>
           <datalist id="Type">
             <option value="birthday party">
             <option value="conference talk">
             <option value="wedding">
           </datalist>
       </div>
+
       <div class="form-group">
           <label for="eventHost">Event Host</label>
           <input type="text" class="form-control" id="eventHost" placeholder="Event Host" required>
+      </div>
+
+      <div class="form-group">
+        <label for="eventLocation">Location</label>
+        <input class="form-control " name="locationName" id="locationName" onblur="validateLocation(name)" type="text" class="form-control pac-input" required>
+        <span class="validateError" id="locationNameError" style="display: none; color: red;">This field can not be empty please enter location</span>
       </div>
 
       <div class="row">
@@ -45,19 +134,13 @@
         </div>
       </div>
 
-
-        <div class="form-group">
-          <label for="eventLocation">Location</label>
-          <input id="locationName" name="locationName" type="text" class="form-control pac-input">
-        </div>
-
-
-
       <div>
         <label for="eventAbout">About the Event</label>
         <textarea class="form-control" rows="5" id="comment"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+
+      <button class="btn btn-primary"  id="submit" name="submit" value="Submit">Submit</button>
+
     </form>
 </div>
